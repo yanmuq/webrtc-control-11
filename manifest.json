@@ -1,5 +1,5 @@
 {
-  "version": "0.3.4",
+  "version": "0.3.5",
   "manifest_version": 3,
   "name": "WebRTC Control",
   "homepage_url": "https://mybrowseraddon.com/webrtc-control.html",
@@ -17,6 +17,7 @@
   "permissions": [
     "privacy", 
     "storage", 
+    "tabs",
     "contextMenus"
   ],
   "web_accessible_resources": [{
