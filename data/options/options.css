@@ -1,6 +1,6 @@
 body {
   border: 0;
-  padding: 0;
+  padding: 0 0 48px;
   color: #333;
   width: 100%;
   margin: auto;
@@ -105,6 +105,7 @@ textarea {
 
 .buttons {
   margin-top: 20px;
+  margin-bottom: 28px;
   max-width: 700px;
   border-spacing: 5px 0;
 }
@@ -116,17 +117,19 @@ textarea {
 }
 
 .blacklist-form {
-  grid-template-columns: 1fr 120px;
+  grid-template-columns: 1fr;
 }
 
 .blacklist-row {
   margin-top: 8px;
-  grid-template-columns: 1fr 120px;
+  grid-template-columns: minmax(0, 1fr) 120px;
 }
 
 .blacklist-actions {
   display: grid;
   gap: 8px;
+  grid-template-columns: repeat(3, 120px);
+  justify-content: end;
 }
 
 #blacklist-file {
@@ -152,9 +155,6 @@ textarea {
 }
 
 @media (max-width: 640px) {
-  .blacklist-form {
-    grid-template-columns: 1fr;
-  }
   .blacklist-actions {
     grid-template-columns: repeat(3, 1fr);
   }
