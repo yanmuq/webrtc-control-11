@@ -1,0 +1,119 @@
+{
+  "extensionName": {
+    "message": "WebRTC 控制"
+  },
+  "extensionDescription": {
+    "message": "控制 WebRTC（禁用/启用），并保护你的 IP 地址。"
+  },
+  "optionsBlockSupportDetection": {
+    "message": "阻止 WebRTC 支持检测"
+  },
+  "optionsBlockSupportDetectionNote": {
+    "message": "注意：启用此选项后，会阻止 \"RTCPeerConnection\"、\"MediaStreamTrack\" 和 \"RTCSessionDescription\"。"
+  },
+  "optionsBlockMediaDevices": {
+    "message": "阻止导航器媒体设备（Navigator Media Devices）"
+  },
+  "optionsBlockMediaDevicesNote": {
+    "message": "注意：启用此选项后，所有视频和音频设备都会被阻止（默认不启用）。"
+  },
+  "optionsBlockAdditionalObjects": {
+    "message": "阻止其他 WebRTC 对象"
+  },
+  "optionsBlockAdditionalObjectsNote": {
+    "message": "注意：启用此选项后，会阻止 \"RTCIceCandidate\"、\"RTCDataChannel\" 和 \"RTCConfiguration\"（默认不启用）。"
+  },
+  "optionsIpHandlingPolicy": {
+    "message": "WebRTC 的 IP 处理策略"
+  },
+  "policyDefault": {
+    "message": "默认（WebRTC 泄露保护关闭）"
+  },
+  "policyDefaultPublicPrivate": {
+    "message": "默认公共和私有接口"
+  },
+  "policyDefaultPublicOnly": {
+    "message": "仅默认公共接口"
+  },
+  "policyDisableNonProxiedUdp": {
+    "message": "禁用非代理 UDP"
+  },
+  "optionsIpHandlingPolicyNote": {
+    "message": "注意：默认选项是 - 禁用非代理 UDP"
+  },
+  "optionsDisabledSites": {
+    "message": "WebRTC 控制不生效的网站"
+  },
+  "blacklistInputPlaceholder": {
+    "message": "example.com、*.example.com，或每行一个网站"
+  },
+  "buttonAdd": {
+    "message": "添加"
+  },
+  "buttonImport": {
+    "message": "导入"
+  },
+  "buttonExport": {
+    "message": "导出"
+  },
+  "buttonRemove": {
+    "message": "删除"
+  },
+  "optionsDisabledSitesNote": {
+    "message": "注意：匹配的网站不会接收页面脚本，且匹配标签页处于活动状态时，浏览器 WebRTC 策略会设为默认。"
+  },
+  "buttonTestWebRTCLeak": {
+    "message": "测试 WebRTC 泄露"
+  },
+  "buttonOpenSupportPage": {
+    "message": "打开支持页面"
+  },
+  "buttonMakeDonation": {
+    "message": "捐赠"
+  },
+  "statusTryAgain": {
+    "message": "请重试。"
+  },
+  "statusSaveFailed": {
+    "message": "保存失败。"
+  },
+  "statusBlacklistUpdated": {
+    "message": "黑名单已更新。"
+  },
+  "statusEntriesLimit": {
+    "message": "每次最多处理 5000 条。"
+  },
+  "statusImportFileTooLarge": {
+    "message": "导入失败。请选择小于 1 MB 的文件。"
+  },
+  "statusImportFailed": {
+    "message": "导入失败。请选择有效的 JSON 或 TXT 黑名单文件。"
+  },
+  "statusSummary": {
+    "message": "已$1 $2 个网站。跳过 $3 个重复项和 $4 个无效项。"
+  },
+  "statusExported": {
+    "message": "已导出 $1 个网站。"
+  },
+  "actionAdded": {
+    "message": "添加"
+  },
+  "actionImported": {
+    "message": "导入"
+  },
+  "contextMenuTestWebRTCLeak": {
+    "message": "测试 WebRTC 泄露"
+  },
+  "actionTitleOffOnSite": {
+    "message": "此网站上的 WebRTC 泄露保护已关闭"
+  },
+  "actionTitleProtection": {
+    "message": "WebRTC 泄露保护：$1"
+  },
+  "stateOn": {
+    "message": "开启"
+  },
+  "stateOff": {
+    "message": "关闭"
+  }
+}
