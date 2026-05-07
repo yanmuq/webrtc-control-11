@@ -9,7 +9,7 @@ body {
 
 p, body, input, label, textarea {
   font-size: 13px;
-  font-family: arial, sans-serif;
+  font-family: Arial, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
 }
 
 table {
@@ -48,7 +48,7 @@ select {
   background: #fff;
   font-weight: 600;
   text-indent: 10px;
-  font-family: monospace;
+  font-family: Arial, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
   border: solid 1px rgba(0,0,0,0.25);
 }
 
