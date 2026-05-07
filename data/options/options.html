@@ -78,12 +78,18 @@
         </tr>
         <tr>
           <td class="blacklist-form">
-            <input type="text" id="blacklist-input" placeholder="example.com or *.example.com">
-            <input type="button" id="blacklist-add" value="Add">
+            <textarea id="blacklist-input" placeholder="example.com, *.example.com, or one site per line"></textarea>
+            <div class="blacklist-actions">
+              <input type="button" id="blacklist-add" value="Add">
+              <input type="button" id="blacklist-import" value="Import">
+              <input type="button" id="blacklist-export" value="Export">
+              <input type="file" id="blacklist-file" accept=".json,.txt">
+            </div>
           </td>
         </tr>
         <tr>
           <td>
+            <p id="blacklist-status" aria-live="polite"></p>
             <div id="blacklist-list"></div>
           </td>
         </tr>
