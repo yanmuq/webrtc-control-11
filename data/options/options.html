@@ -70,35 +70,25 @@
           </td>
         </tr>
       </table>
-      <table class="blacklist">
-        <tr>
-          <td class="title">
-            <p><b>E</b>. Sites where WebRTC Control is disabled</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="blacklist-form">
-            <textarea id="blacklist-input" placeholder="example.com, *.example.com, or one site per line"></textarea>
-            <div class="blacklist-actions">
-              <input type="button" id="blacklist-add" value="Add">
-              <input type="button" id="blacklist-import" value="Import">
-              <input type="button" id="blacklist-export" value="Export">
-              <input type="file" id="blacklist-file" accept=".json,.txt">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p id="blacklist-status" aria-live="polite"></p>
-            <div id="blacklist-list"></div>
-          </td>
-        </tr>
-        <tr>
-          <td class="note">
-            <p>Note: matching sites do not receive page scripts, and the browser WebRTC policy is set to default while the matching tab is active.</p>
-          </td>
-        </tr>
-      </table>
+      <section class="blacklist">
+        <div class="title">
+          <p><b>E</b>. Sites where WebRTC Control is disabled</p>
+        </div>
+        <div class="blacklist-form">
+          <textarea id="blacklist-input" placeholder="example.com, *.example.com, or one site per line"></textarea>
+          <div class="blacklist-actions">
+            <input type="button" id="blacklist-add" value="Add">
+            <input type="button" id="blacklist-import" value="Import">
+            <input type="button" id="blacklist-export" value="Export">
+            <input type="file" id="blacklist-file" accept=".json,.txt">
+          </div>
+        </div>
+        <p id="blacklist-status" aria-live="polite"></p>
+        <div id="blacklist-list"></div>
+        <div class="note">
+          <p>Note: matching sites do not receive page scripts, and the browser WebRTC policy is set to default while the matching tab is active.</p>
+        </div>
+      </section>
       <table class="buttons">
         <tr>
           <td><input type="button" id="test" value="Test WebRTC leak"></td>
