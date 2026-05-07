@@ -129,7 +129,6 @@ textarea {
 
 .blacklist-form {
   display: grid;
-  gap: 4px;
   grid-template-columns: 1fr;
   margin-bottom: 18px;
 }
@@ -139,6 +138,7 @@ textarea {
   gap: 8px;
   grid-template-columns: repeat(3, 120px);
   justify-content: end;
+  margin-top: 8px;
 }
 
 #blacklist-file {
