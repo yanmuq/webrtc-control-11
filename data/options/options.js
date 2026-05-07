@@ -219,7 +219,7 @@ var blacklistUI = {
       return;
     }
     if (entries.length > blacklistUI.maxEntries) {
-      blacklistUI.status("Import failed. Please use 5000 or fewer entries at a time.", true);
+      blacklistUI.status("Please use 5000 or fewer entries at a time.", true);
       return;
     }
     const merged = blacklistUI.merge(entries);
