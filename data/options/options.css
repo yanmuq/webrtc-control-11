@@ -7,7 +7,7 @@ body {
   max-width: 1080px;
 }
 
-p, body, input, label {
+p, body, input, label, textarea {
   font-size: 13px;
   font-family: arial, sans-serif;
 }
@@ -59,7 +59,8 @@ input[type='checkbox'] {
 }
 
 input[type='text'],
-input[type='button'] {
+input[type='button'],
+textarea {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -78,10 +79,19 @@ input[type='button']:hover {
   background: rgba(0,0,0,0.05);
 }
 
-input[type='text'] {
+input[type='text'],
+textarea {
   cursor: text;
   line-height: 42px;
   text-indent: 10px;
+}
+
+textarea {
+  height: 96px;
+  resize: vertical;
+  line-height: 20px;
+  padding: 10px;
+  text-indent: 0;
 }
 
 .note p {
@@ -103,11 +113,34 @@ input[type='text'] {
 .blacklist-row {
   display: grid;
   gap: 8px;
+}
+
+.blacklist-form {
   grid-template-columns: 1fr 120px;
 }
 
 .blacklist-row {
   margin-top: 8px;
+  grid-template-columns: 1fr 120px;
+}
+
+.blacklist-actions {
+  display: grid;
+  gap: 8px;
+}
+
+#blacklist-file {
+  display: none;
+}
+
+#blacklist-status {
+  min-height: 20px;
+  color: #555;
+  text-indent: 5px;
+}
+
+#blacklist-status.error {
+  color: #b00020;
 }
 
 .logo {
@@ -116,6 +149,15 @@ input[type='text'] {
   border-bottom: solid 1px rgba(0,0,0,0.1);
   background: url('../icons/128.png') no-repeat center center;
   background-size: 64px;
+}
+
+@media (max-width: 640px) {
+  .blacklist-form {
+    grid-template-columns: 1fr;
+  }
+  .blacklist-actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -127,7 +169,8 @@ input[type='text'] {
   .container,
   .container select,
   .container input[type='text'],
-  .container input[type='button'] {
+  .container input[type='button'],
+  .container textarea {
     color: #ebebeb;
     background-color: #1e1e1e;
   }
@@ -138,12 +181,17 @@ input[type='text'] {
   .container label {
     color: #ebebeb;
   }
-  .container .note p {
+  .container .note p,
+  .container #blacklist-status {
     color: #b5b5b5;
+  }
+  .container #blacklist-status.error {
+    color: #ff8a80;
   }
   .container select,
   .container input[type='text'],
-  .container input[type='button'] {
+  .container input[type='button'],
+  .container textarea {
     border-color: rgb(255 255 255 / 10%);
   }
   .logo {
