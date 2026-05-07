@@ -87,6 +87,7 @@ textarea {
 }
 
 textarea {
+  display: block;
   height: 96px;
   resize: vertical;
   line-height: 20px;
@@ -110,19 +111,27 @@ textarea {
   border-spacing: 5px 0;
 }
 
-.blacklist-form,
-.blacklist-row {
-  display: grid;
-  gap: 8px;
+.blacklist {
+  margin-top: 24px;
+  border-spacing: 0;
+}
+
+.blacklist tr,
+.blacklist td {
+  display: block;
+  height: auto;
+  line-height: normal;
+}
+
+.blacklist .title {
+  margin-bottom: 14px;
 }
 
 .blacklist-form {
+  display: grid;
+  gap: 12px;
   grid-template-columns: 1fr;
-}
-
-.blacklist-row {
-  margin-top: 4px;
-  grid-template-columns: minmax(0, 1fr) 120px;
+  margin-bottom: 22px;
 }
 
 .blacklist-actions {
@@ -138,13 +147,22 @@ textarea {
 
 #blacklist-status {
   min-height: 20px;
-  margin-top: 12px;
+  margin: 0 0 10px;
   color: #555;
+  line-height: 20px;
   text-indent: 5px;
 }
 
 #blacklist-list {
-  margin-top: 12px;
+  display: grid;
+  gap: 4px;
+  margin-top: 0;
+}
+
+.blacklist-row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 120px;
 }
 
 #blacklist-status.error {
