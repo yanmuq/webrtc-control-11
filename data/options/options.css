@@ -129,9 +129,9 @@ textarea {
 
 .blacklist-form {
   display: grid;
-  gap: 12px;
+  gap: 4px;
   grid-template-columns: 1fr;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .blacklist-actions {
@@ -147,7 +147,7 @@ textarea {
 
 #blacklist-status {
   min-height: 20px;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #555;
   line-height: 20px;
   text-indent: 5px;
@@ -163,6 +163,10 @@ textarea {
   display: grid;
   gap: 8px;
   grid-template-columns: minmax(0, 1fr) 120px;
+}
+
+.blacklist .note {
+  margin-top: 10px;
 }
 
 #blacklist-status.error {
