@@ -1,3 +1,46 @@
+var i18n = (function () {
+  const fallback = {
+    "buttonRemove": "Remove",
+    "statusTryAgain": "Please try again.",
+    "statusSaveFailed": "Save failed.",
+    "statusBlacklistUpdated": "Blacklist updated.",
+    "statusEntriesLimit": "Please use 5000 or fewer entries at a time.",
+    "statusImportFileTooLarge": "Import failed. Please choose a file smaller than 1 MB.",
+    "statusImportFailed": "Import failed. Please choose a valid JSON or TXT blacklist file.",
+    "statusExported": "Exported $1 sites.",
+    "statusSummary": "$1 $2 sites. Skipped $3 duplicates and $4 invalid entries."
+  };
+  /*  */
+  return {
+    "get": function (id, substitutions) {
+      const args = substitutions === undefined ? undefined : substitutions;
+      let message = '';
+      if (chrome.i18n && chrome.i18n.getMessage) {
+        message = chrome.i18n.getMessage(id, args);
+      }
+      message = message || fallback[id] || id;
+      if (args !== undefined && (!chrome.i18n || !chrome.i18n.getMessage)) {
+        const list = Array.isArray(args) ? args : [args];
+        list.forEach(function (value, index) {
+          message = message.replace("$" + (index + 1), value);
+        });
+      }
+      return message;
+    },
+    "apply": function (root) {
+      root.querySelectorAll("[data-i18n]").forEach(function (node) {
+        node.textContent = i18n.get(node.getAttribute("data-i18n"));
+      });
+      root.querySelectorAll("[data-i18n-value]").forEach(function (node) {
+        node.value = i18n.get(node.getAttribute("data-i18n-value"));
+      });
+      root.querySelectorAll("[data-i18n-placeholder]").forEach(function (node) {
+        node.placeholder = i18n.get(node.getAttribute("data-i18n-placeholder"));
+      });
+    }
+  };
+})();
+
 var background = (function () {
   let tmp = {};
   chrome.runtime.onMessage.addListener(function (request) {
@@ -59,7 +102,7 @@ var config = {
       input.type = "text";
       input.value = entry;
       remove.type = "button";
-      remove.value = "Remove";
+      remove.value = i18n.get("buttonRemove");
       /*  */
       input.addEventListener("change", function (e) {
         const value = config.normalize(e.target.value);
@@ -71,13 +114,13 @@ var config = {
         }
         config.saveBlacklist(next, function (ok, error) {
           if (!ok) {
-            blacklistUI.status("Save failed. " + (error ? error.message : "Please try again."), true);
+            blacklistUI.status(i18n.get("statusSaveFailed") + " " + (error ? error.message : i18n.get("statusTryAgain")), true);
             input.value = entry;
             return;
           }
           config.blacklist = next;
           config.renderBlacklist();
-          blacklistUI.status("Blacklist updated.");
+          blacklistUI.status(i18n.get("statusBlacklistUpdated"));
         });
       });
       remove.addEventListener("click", function () {
@@ -85,12 +128,12 @@ var config = {
         next.splice(index, 1);
         config.saveBlacklist(next, function (ok, error) {
           if (!ok) {
-            blacklistUI.status("Save failed. " + (error ? error.message : "Please try again."), true);
+            blacklistUI.status(i18n.get("statusSaveFailed") + " " + (error ? error.message : i18n.get("statusTryAgain")), true);
             return;
           }
           config.blacklist = next;
           config.renderBlacklist();
-          blacklistUI.status("Blacklist updated.");
+          blacklistUI.status(i18n.get("statusBlacklistUpdated"));
         });
       });
       /*  */
@@ -113,6 +156,7 @@ var config = {
     config.renderBlacklist();
   },
   "load": function () {
+    i18n.apply(document);
     const test = document.querySelector("#test");
     const inject = document.querySelector("#inject");
     const select = document.querySelector("#method");
@@ -134,7 +178,7 @@ var config = {
     devices.addEventListener("change", function (e) {background.send("devices", {"devices": e.target.checked})});
     additional.addEventListener("change", function (e) {background.send("additional", {"additional": e.target.checked})});
     blacklistAdd.addEventListener("click", function () {
-      blacklistUI.add(blacklistInput.value, "Added", function () {
+      blacklistUI.add(blacklistInput.value, "actionAdded", function () {
         blacklistInput.value = '';
       });
       blacklistInput.focus();
@@ -210,42 +254,42 @@ var blacklistUI = {
     /*  */
     return {"list": next, "stats": stats};
   },
-  "summary": function (verb, stats) {
-    return verb + " " + stats.added + " sites. Skipped " + stats.duplicates + " duplicates and " + stats.invalid + " invalid entries.";
+  "summary": function (verbId, stats) {
+    return i18n.get("statusSummary", [i18n.get(verbId), String(stats.added), String(stats.duplicates), String(stats.invalid)]);
   },
-  "saveMerged": function (entries, verb, success) {
+  "saveMerged": function (entries, verbId, success) {
     if (!entries.length) {
-      blacklistUI.status(blacklistUI.summary(verb, {"added": 0, "duplicates": 0, "invalid": 0}));
+      blacklistUI.status(blacklistUI.summary(verbId, {"added": 0, "duplicates": 0, "invalid": 0}));
       return;
     }
     if (entries.length > blacklistUI.maxEntries) {
-      blacklistUI.status("Please use 5000 or fewer entries at a time.", true);
+      blacklistUI.status(i18n.get("statusEntriesLimit"), true);
       return;
     }
     const merged = blacklistUI.merge(entries);
     config.saveBlacklist(merged.list, function (ok, error) {
       if (!ok) {
-        blacklistUI.status("Save failed. " + (error ? error.message : "Please try again."), true);
+        blacklistUI.status(i18n.get("statusSaveFailed") + " " + (error ? error.message : i18n.get("statusTryAgain")), true);
         return;
       }
       config.blacklist = merged.list;
       config.renderBlacklist();
-      blacklistUI.status(blacklistUI.summary(verb, merged.stats));
+      blacklistUI.status(blacklistUI.summary(verbId, merged.stats));
       if (success) success();
     });
   },
-  "add": function (text, verb, success) {
-    blacklistUI.saveMerged(blacklistUI.splitLines(text), verb, success);
+  "add": function (text, verbId, success) {
+    blacklistUI.saveMerged(blacklistUI.splitLines(text), verbId, success);
   },
   "import": function (file) {
     if (!file) return;
     if (file.size > blacklistUI.maxFileSize) {
-      blacklistUI.status("Import failed. Please choose a file smaller than 1 MB.", true);
+      blacklistUI.status(i18n.get("statusImportFileTooLarge"), true);
       return;
     }
     const reader = new FileReader();
     reader.onerror = function () {
-      blacklistUI.status("Import failed. Please choose a valid JSON or TXT blacklist file.", true);
+      blacklistUI.status(i18n.get("statusImportFailed"), true);
     };
     reader.onload = function () {
       let entries = [];
@@ -262,10 +306,10 @@ var blacklistUI = {
           entries = blacklistUI.splitLines(text);
         }
       } catch (e) {
-        blacklistUI.status("Import failed. Please choose a valid JSON or TXT blacklist file.", true);
+        blacklistUI.status(i18n.get("statusImportFailed"), true);
         return;
       }
-      blacklistUI.saveMerged(entries, "Imported");
+      blacklistUI.saveMerged(entries, "actionImported");
     };
     reader.readAsText(file);
   },
@@ -285,7 +329,7 @@ var blacklistUI = {
     link.click();
     link.remove();
     URL.revokeObjectURL(url);
-    blacklistUI.status("Exported " + config.blacklist.length + " sites.");
+    blacklistUI.status(i18n.get("statusExported", String(config.blacklist.length)));
   }
 };
 
