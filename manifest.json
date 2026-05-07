@@ -1,6 +1,6 @@
 {
-  "version": "3.4.0.12",
-  "version_name": "3.4.0.1.2",
+  "version": "0.3.3.12",
+  "version_name": "0.3.3.12",
   "manifest_version": 3,
   "name": "WebRTC Control",
   "homepage_url": "https://mybrowseraddon.com/webrtc-control.html",
