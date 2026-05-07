@@ -2,9 +2,10 @@
   "version": "0.3.4.3",
   "version_name": "0.3.4.3",
   "manifest_version": 3,
-  "name": "WebRTC Control",
+  "name": "__MSG_extensionName__",
+  "default_locale": "en",
   "homepage_url": "https://mybrowseraddon.com/webrtc-control.html",
-  "description": "Have control over WebRTC (disable | enable) and protect your IP address.",
+  "description": "__MSG_extensionDescription__",
   "background": {
     "service_worker": "background.js"
   },
@@ -30,7 +31,7 @@
     ]
   }],
   "action": {
-    "default_title": "WebRTC Control",
+    "default_title": "__MSG_extensionName__",
     "default_icon": {
       "16": "data/icons/16.png",
       "32": "data/icons/32.png",
