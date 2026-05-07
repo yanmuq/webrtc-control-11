@@ -10,13 +10,13 @@
       <table class="checkbox">
         <tr>
           <td class="title">
-            <label for="inject"><b>A</b>. Block WebRTC Support Detection</label>
+            <label for="inject"><b>A</b>. <span data-i18n="optionsBlockSupportDetection"></span></label>
             <input type="checkbox" id="inject">
           </td>
         </tr>
         <tr>
           <td class="note">
-            <p>Note: when this option is marked, "RTCPeerConnection", "MediaStreamTrack" and "RTCSessionDescription" are blocked.</p>
+            <p data-i18n="optionsBlockSupportDetectionNote"></p>
           </td>
         </tr>
         <tr>
@@ -24,13 +24,13 @@
         </tr>
         <tr>
           <td class="title">
-            <label for="devices"><b>B</b>. Block Navigator Media Devices</label>
+            <label for="devices"><b>B</b>. <span data-i18n="optionsBlockMediaDevices"></span></label>
             <input type="checkbox" id="devices">
           </td>
         </tr>
         <tr>
           <td class="note">
-            <p>Note: when this option is marked, all video and audio devices are blocked (not active by default).</p>
+            <p data-i18n="optionsBlockMediaDevicesNote"></p>
           </td>
         </tr>
         <tr>
@@ -38,62 +38,62 @@
         </tr>
         <tr>
           <td class="title">
-            <label for="additional"><b>C</b>. Block Additional WebRTC Objects</label>
+            <label for="additional"><b>C</b>. <span data-i18n="optionsBlockAdditionalObjects"></span></label>
             <input type="checkbox" id="additional">
           </td>
         </tr>
         <tr>
           <td class="note">
-            <p>Note: when this option is marked, "RTCIceCandidate", "RTCDataChannel" and "RTCConfiguration" are blocked (not active by default).</p>
+            <p data-i18n="optionsBlockAdditionalObjectsNote"></p>
           </td>
         </tr>
       </table>
       <table class="select">
         <tr>
           <td class="title">
-            <p><b>D</b>. IP handling policy for WebRTC</p>
+            <p><b>D</b>. <span data-i18n="optionsIpHandlingPolicy"></span></p>
           </td>
         </tr>
         <tr>
           <td>
             <select id="method">
-              <option value="default">Default (WebRTC leak protection is OFF)</option>
-              <option value="default_public_and_private_interfaces">Default public and private interfaces</option>
-              <option value="default_public_interface_only">Default public interface only</option>
-              <option value="disable_non_proxied_udp">Disable non proxied udp</option>
+              <option value="default" data-i18n="policyDefault"></option>
+              <option value="default_public_and_private_interfaces" data-i18n="policyDefaultPublicPrivate"></option>
+              <option value="default_public_interface_only" data-i18n="policyDefaultPublicOnly"></option>
+              <option value="disable_non_proxied_udp" data-i18n="policyDisableNonProxiedUdp"></option>
             </select>
           </td>
         </tr>
         <tr>
           <td class="note">
-            <p>Note: default option is - Disable non proxied udp</p>
+            <p data-i18n="optionsIpHandlingPolicyNote"></p>
           </td>
         </tr>
       </table>
       <section class="blacklist">
         <div class="title">
-          <p><b>E</b>. Sites where WebRTC Control is disabled</p>
+          <p><b>E</b>. <span data-i18n="optionsDisabledSites"></span></p>
         </div>
         <div class="blacklist-form">
-          <textarea id="blacklist-input" placeholder="example.com, *.example.com, or one site per line"></textarea>
+          <textarea id="blacklist-input" data-i18n-placeholder="blacklistInputPlaceholder"></textarea>
           <div class="blacklist-actions">
-            <input type="button" id="blacklist-add" value="Add">
-            <input type="button" id="blacklist-import" value="Import">
-            <input type="button" id="blacklist-export" value="Export">
+            <input type="button" id="blacklist-add" data-i18n-value="buttonAdd">
+            <input type="button" id="blacklist-import" data-i18n-value="buttonImport">
+            <input type="button" id="blacklist-export" data-i18n-value="buttonExport">
             <input type="file" id="blacklist-file" accept=".json,.txt">
           </div>
         </div>
         <p id="blacklist-status" aria-live="polite"></p>
         <div id="blacklist-list"></div>
         <div class="note">
-          <p>Note: matching sites do not receive page scripts, and the browser WebRTC policy is set to default while the matching tab is active.</p>
+          <p data-i18n="optionsDisabledSitesNote"></p>
         </div>
       </section>
       <table class="buttons">
         <tr>
-          <td><input type="button" id="test" value="Test WebRTC leak"></td>
-          <td><input type="button" id="support" value="Open support page"></td>
-          <td><input type="button" id="donation" value="Make a donation"></td>
+          <td><input type="button" id="test" data-i18n-value="buttonTestWebRTCLeak"></td>
+          <td><input type="button" id="support" data-i18n-value="buttonOpenSupportPage"></td>
+          <td><input type="button" id="donation" data-i18n-value="buttonMakeDonation"></td>
         </tr>
       </table>
     </div>
